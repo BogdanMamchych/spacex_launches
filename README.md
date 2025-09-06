@@ -1,16 +1,15 @@
 # spacex_launches
 
-A new Flutter project.
+A Flutter app that displays SpaceX rocket launches and mission details.
 
-## Getting Started
+## Features
+- List of launches with date and rocket name
+- Launch detail screen with mission info and images
+- Pull-to-refresh and basic offline caching
 
-This project is a starting point for a Flutter application.
+## Quick start
+1. `flutter pub get`
+2. `flutter run`
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Notes
+- Uses Riverpod for state management.

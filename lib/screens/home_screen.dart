@@ -1,10 +1,10 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spacex_launches/providers/spacex_provider.dart';
 import 'package:spacex_launches/widgets/rocket_slider.dart';
 import 'package:spacex_launches/widgets/launch_tile.dart';
 import 'package:spacex_launches/utils/url_utils.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SpaceXLaunchesHomePage extends ConsumerWidget {
   const SpaceXLaunchesHomePage({super.key});
@@ -15,6 +15,7 @@ class SpaceXLaunchesHomePage extends ConsumerWidget {
     final launchesAsyncList = ref.watch(launchesListProvider);
     final currentIndex = ref.watch(currentIndexProvider);
     const cardRadius = 14.0;
+    const double stroke = 1;
 
     return Scaffold(
       appBar: AppBar(
@@ -43,16 +44,17 @@ class SpaceXLaunchesHomePage extends ConsumerWidget {
                   const SizedBox(height: 12),
 
                   Center(
-                    child: AnimatedSmoothIndicator(
-                      activeIndex: currentIndex,
-                      count: rockets.length,
-                      effect: const WormEffect(
-                        dotHeight: 8,
-                        dotWidth: 8,
-                        activeDotColor: Colors.indigo,
-                        dotColor: Colors.white24,
+                    child: DotsIndicator(
+                      dotsCount: rockets.length,
+                      position: currentIndex.toDouble(),
+                      decorator: DotsDecorator(
+                        color: Colors.transparent,
+                        shape: CircleBorder(side: BorderSide(color: Colors.white, width: stroke)),
+                        activeColor: Colors.white,
+                        activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                        spacing: const EdgeInsets.symmetric(horizontal: 1.5),
                       ),
-                    ),
+                    )
                   ),
 
                   const SizedBox(height: 18),
